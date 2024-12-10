@@ -18,7 +18,7 @@ console.log("Hello World!");
     // return arr
         // .filter(num => num > 0) // Faqat musbat sonlarni filtrlash
         // .join("");             // Array elementlarini bitta stringga birlashtirish
-}
+// }
 
 // console.log(getPositive([1, -4, 2])); // "12"
 // console.log(getPositive([-3, -7, 0])); // ""
