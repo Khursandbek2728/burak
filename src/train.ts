@@ -24,6 +24,8 @@ console.log("Hello World!");
 // console.log(getPositive([-3, -7, 0])); // ""
 // console.log(getPositive([5, 10, 15])); // "51015"
 
+// H2 TASK
+
 function getDigits(input: string): string {
     // Argumentdagi faqat raqamlarni ajratib olish uchun filter qilamiz
     return input.split('').filter(char => /\d/.test(char)).join('');
