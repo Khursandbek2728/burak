@@ -26,11 +26,24 @@ console.log("Hello World!");
 
 // H2 TASK
 
-function getDigits(input: string): string {
+// function getDigits(input: string): string {
     // Argumentdagi faqat raqamlarni ajratib olish uchun filter qilamiz
-    return input.split('').filter(char => /\d/.test(char)).join('');
-}
+    // return input.split('').filter(char => /\d/.test(char)).join('');
+// }
 
 // Misol
-const result = getDigits("m14i1t");
-console.log(result); // Output: "141"
+// const result = getDigits("m14i1t");
+// console.log(result); // Output: "141"
+
+
+/*Project Standarts:
+-Logging standarts
+-Naming standarts
+  function, methd, variable => CAMEL    goHome
+  class => PASCAL    MemberService
+  folder =. KEBAB
+  css => SNAKE       button_style
+
+-Error handling
+
+ */
