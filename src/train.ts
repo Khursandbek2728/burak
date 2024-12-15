@@ -23,3 +23,12 @@ console.log("Hello World!");
 // console.log(getPositive([1, -4, 2])); // "12"
 // console.log(getPositive([-3, -7, 0])); // ""
 // console.log(getPositive([5, 10, 15])); // "51015"
+
+function getDigits(input: string): string {
+    // Argumentdagi faqat raqamlarni ajratib olish uchun filter qilamiz
+    return input.split('').filter(char => /\d/.test(char)).join('');
+}
+
+// Misol
+const result = getDigits("m14i1t");
+console.log(result); // Output: "141"
