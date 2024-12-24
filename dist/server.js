@@ -1,4 +1,4 @@
 "use strict";
 console.log("EXECUTED");
-const person = "Martin";
+const person = "Adam";
 const count = 100;
