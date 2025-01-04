@@ -1,17 +1,31 @@
-// M-TASK
+// N-TASK
 
-function getSquareNumbers(
-  numbers: number[]
-): { number: number; square: number }[] {
-  return numbers.map((num) => ({
-    number: num,
-    square: num * num,
-  }));
+function palindromCheck(str: string): boolean {
+  const cleanedStr = str.replace(/\s+/g, "").toLowerCase();
+
+  const reversedStr = cleanedStr.split("").reverse().join("");
+  return cleanedStr === reversedStr;
 }
 
+// Misollar
+console.log(palindromCheck("dad")); // true
+console.log(palindromCheck("son")); // false
+console.log(palindromCheck("A man a plan a canal Panama")); // true
+
+// M-TASK
+
+// function getSquareNumbers(
+// numbers: number[]
+// ): { number: number; square: number }[] {
+// return numbers.map((num) => ({
+// number: num,
+// square: num * num,
+// }));
+// }
+
 // Misol
-const result = getSquareNumbers([1, 2, 3]);
-console.log(result);
+// const result = getSquareNumbers([1, 2, 3]);
+// console.log(result);
 // Natija: [{number: 1, square: 1}, {number: 2, square: 4}, {number: 3, square: 9}]
 
 // L-TASK:
