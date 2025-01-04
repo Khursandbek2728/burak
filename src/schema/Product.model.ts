@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 import {
   ProductSize,
   ProductVolume,
@@ -42,23 +42,27 @@ const productSchema = new Schema(
     },
 
     productVolume: {
-      type: String,
+      type: Number,
       enum: ProductVolume,
       default: ProductVolume.ONE,
     },
 
     productDesc: {
       type: String,
-      require: true,
     },
 
-    productImage: {
+    productImages: {
       type: [String],
       default: [],
     },
+
     productViews: {
       type: Number,
       default: 0,
+    },
+
+    _id: {
+      type: Types.ObjectId,
     },
   },
   { timestamps: true }

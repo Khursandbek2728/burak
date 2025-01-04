@@ -7,12 +7,13 @@ import {
   LoginInput,
   AdminRequest,
 } from "../libs/types/member";
-import Errors, { Message } from "../libs/Errors";
+import Errors, { HttpCode, Message } from "../libs/Errors";
+import { ProductInput } from "../libs/types/product";
 
 const productService = new ProductService();
 const productController: T = {};
 
-productController.getAllProducts = async (req: AdminRequest, res: Response) => {
+productController.getAllProducts = async (req: Request, res: Response) => {
   try {
     console.log("getAllProducts");
     res.render("products");
@@ -26,16 +27,33 @@ productController.getAllProducts = async (req: AdminRequest, res: Response) => {
   }
 };
 
-productController.createNewProduct = async (req: Request, res: Response) => {
+productController.createNewProduct = async (
+  req: AdminRequest,
+  res: Response
+) => {
   try {
     console.log("createNewProduct");
-    res.send("done");
+    console.log("req.files:", req.files);
+
+    if (!req.files?.length)
+      throw new Errors(HttpCode.INTERNAL_SERVER_ERROR, Message.CREATE_FAILED);
+
+    const data: ProductInput = req.body;
+    data.productImages = req.files?.map((ele) => {
+      return ele.path;
+    });
+
+    await productService.createNewProduct(data);
+
+    res.send(
+      `<script> alert("Sucessful creation!"); window.location.replace("/admin/login")</script>`
+    );
   } catch (err) {
     console.log("Error, createNewProduct:", err);
     const message =
       err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
     res.send(
-      `<script> alert("${message}"); window.location.replace("admin/signup")</script>`
+      `<script> alert("${message}"); window.location.replace("admin/product/all")</script>`
     );
   }
 };
