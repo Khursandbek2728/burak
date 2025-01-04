@@ -1,5 +1,10 @@
+import { shapeIntoMongooseObjectId } from "../libs/config";
 import Errors, { HttpCode, Message } from "../libs/Errors";
-import { Product, ProductInput } from "../libs/types/product";
+import {
+  Product,
+  ProductInput,
+  ProductUpdateInput,
+} from "../libs/types/product";
 import ProductModel from "../schema/Product.model";
 
 class ProductService {
@@ -12,6 +17,14 @@ class ProductService {
   /** SPA */
 
   /**SSR */
+
+  public async getAllProducts(): Promise<Product[]> {
+    const result = await this.productModel.find().exec();
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+    console.log("result:", result);
+    return result;
+  }
 
   public async createNewProduct(input: ProductInput): Promise<Product> {
     try {
