@@ -1,4 +1,4 @@
-import mongoose, { Schema, Types } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import {
   ProductSize,
   ProductVolume,
@@ -59,10 +59,6 @@ const productSchema = new Schema(
     productViews: {
       type: Number,
       default: 0,
-    },
-
-    _id: {
-      type: Types.ObjectId,
     },
   },
   { timestamps: true }

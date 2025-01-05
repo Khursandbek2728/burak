@@ -14,7 +14,6 @@
   "author": "Adam",
   "license": "ISC",
   "dependencies": {
-    "@types/mongoose": "^5.11.97",
     "bcryptjs": "^2.4.3",
     "connect-mongodb-session": "^3.1.1",
     "dotenv": "^16.0.0",
@@ -23,7 +22,7 @@
     "express-session": "^1.17.3",
     "moment": "^2.30.1",
     "mongodb": "^3.2.6",
-    "mongoose": "^6.13.5",
+    "mongoose": "^6.2.9",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "uuid": "^8.3.2"
