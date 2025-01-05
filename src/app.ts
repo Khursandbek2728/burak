@@ -27,13 +27,14 @@ app.use(
   session({
     secret: String(process.env.SESSION_SECRET),
     cookie: {
-      maxAge: 1000 * 60 * 60 * 3, // 3 hours
+      maxAge: 1000 * 3600 * 6, // 6h
     },
     store: store,
     resave: true,
     saveUninitialized: true,
   })
 );
+
 app.use(function (req, res, next) {
   const sessionInstance = req.session as T;
   res.locals.member = sessionInstance.member;
@@ -45,7 +46,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 /** 4-ROUTERS **/
-app.use("/admin", routerAdmin);
-app.use("/", router);
+app.use("/admin", routerAdmin); // BSSR: EJS
+app.use("/", router); // SPA: REACT
 
 export default app;

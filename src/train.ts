@@ -1,189 +1,182 @@
-// N-TASK
+console.log("Train Area:");
 
-function palindromCheck(str: string): boolean {
-  const cleanedStr = str.replace(/\s+/g, "").toLowerCase();
+// // H-TASK
 
-  const reversedStr = cleanedStr.split("").reverse().join("");
-  return cleanedStr === reversedStr;
-}
-
-// Misollar
-console.log(palindromCheck("dad")); // true
-console.log(palindromCheck("son")); // false
-console.log(palindromCheck("A man a plan a canal Panama")); // true
-
-// M-TASK
-
-// function getSquareNumbers(
-// numbers: number[]
-// ): { number: number; square: number }[] {
-// return numbers.map((num) => ({
-// number: num,
-// square: num * num,
-// }));
-// }
-
-// Misol
-// const result = getSquareNumbers([1, 2, 3]);
-// console.log(result);
-// Natija: [{number: 1, square: 1}, {number: 2, square: 4}, {number: 3, square: 9}]
-
-// L-TASK:
-// Shunday function yozing, u string qabul qilsin va string ichidagi hamma sozlarni chappasiga yozib
-// va sozlar ketma-ketligini buzmasdan stringni qaytarsin.
-// MASALAN: reverseSentence("we like coding") return "ew ekil gnidoc";
-// function reverseSentence(sentence: string): string {
-//   const arr: string[] = sentence.split(" ");
-//   for (let i = 0; i < arr.length; i++) {
-//     arr[i] = arr[i].split("").reverse().join("");
+// function getPositive(arr) {
+//     return arr.filter(num => num > 0).join('');
 //   }
-//   return arr.join(" ");
+
+//   // Misol uchun
+//   console.log(getPositive([1, -4, 2]));
+//   console.log(getPositive([1, -4, 2, 5, -10]));
+//   console.log(getPositive([-1, -16, 6, 27]));
+//   console.log(getPositive([-19, -21,, 9, 101, 30]));
+
+// // H-2 TASK
+
+// function getDigits(inputString: string): string {
+//   return inputString
+//     .split('')
+//     .filter(char => /\d/.test(char))
+//     .join('');
 // }
 
-// function reverseSentence(sentence: string): string {
-//   return sentence
-//     .split(" ")
-//     .map((word) => word.split("").reverse().join(""))
-//     .join(" ");
+// const result = getDigits("m14i1t");
+// console.log(result);
+// const result2 = getDigits("m2456ion5jb5t");
+// console.log(result2);
+
+// const result3 = getDigits("nn784n4j4n34h459b");
+// console.log(result3);
+// const result4 = getDigits("m8lm34k4n9bb");
+// console.log(result4);
+
+/* Project Standarts:
+  -Logging standarts
+  -Naming standarts:
+     function, method, variable => CAMEL
+      class => PASCAL
+     folder, file => KEBAB
+     CSS => SNAKE
+  -Error handling
+
+  */
+
+/*
+    Traditional Api
+    Rest Api
+    GraphQL Api
+    ...
+  */
+
+// // I-TASK
+
+// function majorityElement(arr: number[]): number | null {
+//   const countMap: Record<number, number> = {};
+//   let maxElement: number | null = null;
+//   let maxCount = 0;
+
+//   for (const num of arr) {
+//       countMap[num] = (countMap[num] || 0) + 1;
+//       if (countMap[num] > maxCount) {
+//           maxCount = countMap[num];
+//           maxElement = num;
+//       }
+//   }
+
+//   return maxElement;
 // }
 
-// console.log(reverseSentence("we like coding")); // "ew ekil gnidoc";
+// console.log(majorityElement([5, 3, 5, 2, 3, 4, 5, 9, 3, 4]));
+// console.log(majorityElement([2, 5, 1, 2, 2, 8, 3, 3, 3]));
+// console.log(majorityElement([9, 7, 7, 8, 1, 1]));
 
-// K-TASK:
-// Shunday function yozing, u string qabul qilsin va string ichidagi unli harflar sonini qaytarsin.
-// MASALAN: countVowels("string") return 1;
+// // J-TASK
 
-// function countVowels(word: string): number {
-//   const vowels = ["a", "e", "i", "o", "u"];
-//   const letters = word.toLocaleLowerCase().split("");
-
-//   const sum = letters.reduce((acc, char) => {
-//     if (vowels.includes(char)) {
-//       // console.log(char);
-//       acc++;
-//     }
-//     return acc;
-//   }, 0);
-
-//   return sum;
-// }
-
-// console.log(countVowels("string")); // 1
-// console.log(countVowels("Hello")); // 2
-
-// J-TASK:
-// Shunday function yozing, u string qabul qilsin va string ichidagi eng uzun sozni qaytarsin.
-// MASALAN: findLongestWord("I come from Uzbekistan") return "Uzbekistan"
 // function findLongestWord(sentence: string): string {
 //   const words = sentence.split(" ");
-//   let max_length = 0,
-//     max_word: string = "";
-//   for (let i = 0; i < words.length; i++) {
-//     if (words[i].length > max_length) {
-//       max_length = words[i].length;
-//       max_word = words[i];
-//     }
-//   }
-//   return max_word;
-// }
-// console.log(findLongestWord("I come from Uzbekistan"));
 
-// I-TASK:
-// Shunday function yozing, u parametridagi array ichida eng kop takrorlangan raqamni topib qaytarsin.
-// MASALAN: majorityElement([1,2,3,4,5,4,3,4]) return 4
-// function majorityElement(arr: number[]): number {
-//   // freqMap
-//   const freqMap: { [key: number]: number } = {};
-//   for (const num of arr) {
-//     freqMap[num] = (freqMap[num] || 0) + 1;
-//   }
+//   const longestWord = words.reduce((longest, current) => {
+//       return current.length > longest.length ? current : longest;
+//   }, "");
 
-//   // find the most freq num
-//   let mostFreqNum = Number.MIN_SAFE_INTEGER;
-//   let mostFreq = 0;
-//   for (const num in freqMap) {
-//     if (freqMap[num] > mostFreq) {
-//       mostFreqNum = parseInt(num);
-//       mostFreq = freqMap[num];
-//     }
-//   }
-
-//   // return
-//   return mostFreqNum;
+//   return longestWord;
 // }
 
-// console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4])); // 4
-// console.log(majorityElement([1, 3, 3, 4, 5, 4, 3, 3])); // 3
+// const result = findLongestWord("나는 감정스러운 사람이다");
+// console.log(result);
 
-/**
-Projects Standars:
-  - Logging Standards
-  - Naming Standards
-    function, method, variable => CAMEL   case goHome
-    class => PASCAL case                  MemberService
-    folder => KEBAB                       open-csv
-    css => SNAKE                          button_style
-  - Error Handling
+// const result2 = findLongestWord("Korean peoples are so kind");
+// console.log(result2);
 
-    Express res types: send, json, redirect, end, render
+// const result3 = findLongestWord("O'zbekiston vatanim manim");
+// console.log(result3);
 
- */
+// // K-TASK
 
-// H2-TASK:
+// function countVowels(str: string): number {
+//   const vowels = "aeiouAEIOU";
+//   let count = 0;
 
-// Shunday function tuzing, unga string argument pass bolsin. Function ushbu agrumentdagi digitlarni yangi stringda return qilsin
-// MASALAN: getDigits("m14i1t") return qiladi "141"
-// function getDigits(word: string): string {
-//   let arr: number[] = [];
-
-//   for (let char of word) {
-//     if ("0" <= char && char <= "9") {
-//       arr.push(Number(char));
-//     }
+//   for (const char of str) {
+//       if (vowels.includes(char)) {
+//           count++;
+//       }
 //   }
 
-//   return arr.join("");
-//   // return word.replace(/\D/g, "");
+//   return count;
 // }
 
-// console.log(getDigits("m14i1t")); // "141"
+// console.log(countVowels("understand"));
+// console.log(countVowels("Assalom Uzbekistan"));
 
-// TASK H:
+// // L-TASK
 
-// Raqamlardan iborat arrayni argument sifatida qabul qiladigan
-// function tuzing. Ushbu function faqatgina positive sonlarni olib
-// string holatida return qilsin.
-// MASALAN: getPositive([1, -4, 2]) return qiladi "12".
-// function getPositive(arr: number[]): string {
-//   const new_arr: number[] = [];
-//   for (let num of arr) {
-//     if (num > 0) {
-//       new_arr.push(num);
-//     }
-//   }
-//   return new_arr.join("");
+// function reverseSentence(sentence: string): string {
+//   const words = sentence.split(" ");
+//   const reversedWords = words.map(word => word.split("").reverse().join(""));
+//   return reversedWords.join(" ");
 // }
 
-// console.log(getPositive([1, -4, 2])); // "12"
-// console.log(getPositive([1, 5, -4, -2])); // "15"
+// const input = ("We like coding");
+// const result = reverseSentence(input);
+// console.log(result);
 
-// G-TASK:
+// const input2 = "I love Uzbekistan";
+// const result2 = reverseSentence(input2);
+// console.log(result2);
 
-// Shunday function tuzingki unga integerlardan iborat array pass bolsin va
-// function bizga osha arrayning eng katta qiymatiga tegishli birinchi indexni qaytarsin.
-// MASALAN: getHighestIndex([5, 21, 12, 21, 8]) return qiladi 1 sonini.
+// const input3 = "I am a coder not an engineer";
+// const result3 = reverseSentence(input3);
+// console.log(result3);
 
-// function getHighestIndex(arr: number[]): number {
-//   let max_num: number = Number.MIN_VALUE,
-//     max_idx: number = 0;
-//   for (let index = 0; index < arr.length; index++) {
-//     if (arr[index] > max_num) {
-//       max_num = arr[index];
-//       max_idx = index;
-//     }
-//   }
-//   return max_idx;
+// // M-TASK
+
+// type NumberSquare = {
+//   number: number;
+//   square: number;
+// };
+
+// function getSquareNumbers(numbers: number[]): NumberSquare[] {
+//   return numbers.map(num => ({
+//     number: num,
+//     square: num * num,
+//   }));
 // }
 
-// console.log(getHighestIndex([5, 21, 12, 21, 8])); // 1
-// console.log(getHighestIndex([5, 21, 12, 21, 50, 8])); // 4
+// const result = getSquareNumbers([1, 2, 3]);
+// console.log(result);
+
+// const result2 = getSquareNumbers([4, 5, 6]);
+// console.log(result2);
+
+// const result3 = getSquareNumbers([7, 8, 9]);
+// console.log(result3);
+
+// // N-TASK
+
+// function palindromCheck(input: string): boolean {
+//   const cleanedInput = input.toLowerCase().replace(/[\W_]/g, "");
+
+//   const reversedInput = cleanedInput.split("").reverse().join("");
+
+//   return cleanedInput === reversedInput;
+// }
+
+// console.log("Ona:", palindromCheck("Ona"));
+// console.log("Qozoq:", palindromCheck("Qozoq"));
+// console.log("Aziza:", palindromCheck("Aziza"));
+// console.log("Hello:", palindromCheck("Hello"));
+
+// O-TASK
+
+function calculateSumOfNumbers(arr: any[]): number {
+  return arr.reduce((sum, current) => {
+    return typeof current === "number" ? sum + current : sum;
+  }, 0);
+}
+
+console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]));
+console.log(calculateSumOfNumbers([12, "2", { son: 5 }, false, 98]));
+console.log(calculateSumOfNumbers([71, "20", { son: 1 }, false, 18]));
+console.log(calculateSumOfNumbers([0, "101", { son: 9 }, true, 2]));
