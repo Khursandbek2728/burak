@@ -49,6 +49,12 @@ console.log("Train Area:");
     ...
   */
 
+/**
+ * Validation:
+ * Frontend validation
+ * Backend validation
+ * Database validation
+ */
 // // I-TASK
 
 // function majorityElement(arr: number[]): number | null {
