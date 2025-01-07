@@ -186,3 +186,5 @@ console.log(calculateSumOfNumbers([10, "10", { son: 10 }, true, 35]));
 console.log(calculateSumOfNumbers([12, "2", { son: 5 }, false, 98]));
 console.log(calculateSumOfNumbers([71, "20", { son: 1 }, false, 18]));
 console.log(calculateSumOfNumbers([0, "101", { son: 9 }, true, 2]));
+
+//sdkjbkjsdkdhvkdhdssdhkshv
