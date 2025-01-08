@@ -31,6 +31,9 @@ productController.createNewProduct = async (
   res: Response
 ) => {
   try {
+    console.log("createNewProduct");
+    console.log("Uploaded Files:", req.files);
+
     if (!req.files?.length)
       throw new Errors(HttpCode.INTERNAL_SERVER_ERROR, Message.CREATE_FAILED);
 
