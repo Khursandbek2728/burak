@@ -188,3 +188,12 @@ console.log("Train Area:");
 // console.log(calculateSumOfNumbers([0, "101", { son: 9 }, true, 2]));
 
 //sdkjbkjsdkdhvkdhdssdhkshv
+
+// Q-TASK
+
+function hasProperty(obj: object, prop: string): boolean {
+  return Object.prototype.hasOwnProperty.call(obj, prop);
+}
+
+console.log(hasProperty({ name: "BMW", model: "M3" }, "model")); // true
+console.log(hasProperty({ name: "BMW", model: "M3" }, "year")); // false
