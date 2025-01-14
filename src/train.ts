@@ -191,9 +191,26 @@ console.log("Train Area:");
 
 // Q-TASK
 
-function hasProperty(obj: object, prop: string): boolean {
-  return Object.prototype.hasOwnProperty.call(obj, prop);
+// function hasProperty(obj: object, prop: string): boolean {
+//   return Object.prototype.hasOwnProperty.call(obj, prop);
+// }
+
+// console.log(hasProperty({ name: "BMW", model: "M3" }, "model")); // true
+// console.log(hasProperty({ name: "BMW", model: "M3" }, "year")); // false
+
+// R-TASK
+function calculate(expression: string): number {
+  try {
+    if (/^[\d\s\+\-\*\/\(\)]+$/.test(expression)) {
+      return Function(`return ${expression}`)();
+    } else {
+      throw new Error("Invalid expression");
+    }
+  } catch (error) {
+    throw new Error("Error evaluating the expression");
+  }
 }
 
-console.log(hasProperty({ name: "BMW", model: "M3" }, "model")); // true
-console.log(hasProperty({ name: "BMW", model: "M3" }, "year")); // false
+console.log(calculate("1 + 3")); // 4
+console.log(calculate("2 * 5")); // 10
+console.log(calculate("10 / 2 + 1")); // 6
