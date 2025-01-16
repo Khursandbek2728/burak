@@ -199,18 +199,33 @@ console.log("Train Area:");
 // console.log(hasProperty({ name: "BMW", model: "M3" }, "year")); // false
 
 // R-TASK
-function calculate(expression: string): number {
-  try {
-    if (/^[\d\s\+\-\*\/\(\)]+$/.test(expression)) {
-      return Function(`return ${expression}`)();
-    } else {
-      throw new Error("Invalid expression");
-    }
-  } catch (error) {
-    throw new Error("Error evaluating the expression");
-  }
+// function calculate(expression: string): number {
+//   try {
+//     if (/^[\d\s\+\-\*\/\(\)]+$/.test(expression)) {
+//       return Function(`return ${expression}`)();
+//     } else {
+//       throw new Error("Invalid expression");
+//     }
+//   } catch (error) {
+//     throw new Error("Error evaluating the expression");
+//   }
+// }
+
+// console.log(calculate("1 + 3")); // 4
+// console.log(calculate("2 * 5")); // 10
+// console.log(calculate("10 / 2 + 1")); // 6
+
+// S-TASK
+
+function missingNumber(nums: number[]): number {
+  const n = nums.length;
+  const expectedSum = (n * (n + 1)) / 2;
+
+  const actualSum = nums.reduce((sum, num) => sum + num, 0);
+
+  return expectedSum - actualSum;
 }
 
-console.log(calculate("1 + 3")); // 4
-console.log(calculate("2 * 5")); // 10
-console.log(calculate("10 / 2 + 1")); // 6
+const result = missingNumber([3, 0, 1]);
+console.log(result);
+
