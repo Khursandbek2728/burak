@@ -231,28 +231,41 @@ console.log("Train Area:");
 
 // T-TASK
 
-function mergeSortedArrays(array1: number[], array2: number[]): number[] {
-  let i = 0, j = 0;
-  const mergedArray: number[] = [];
-  while (i < array1.length && j < array2.length) {
-      if (array1[i] < array2[j]) {
-          mergedArray.push(array1[i]);
-          i++;
-      } else {
-          mergedArray.push(array2[j]);
-          j++;
-      }
-  }
-  while (i < array1.length) {
-      mergedArray.push(array1[i]);
-      i++;
-  }
-  while (j < array2.length) {
-      mergedArray.push(array2[j]);
-      j++;
-  }
+// function mergeSortedArrays(array1: number[], array2: number[]): number[] {
+//   let i = 0, j = 0;
+//   const mergedArray: number[] = [];
+//   while (i < array1.length && j < array2.length) {
+//       if (array1[i] < array2[j]) {
+//           mergedArray.push(array1[i]);
+//           i++;
+//       } else {
+//           mergedArray.push(array2[j]);
+//           j++;
+//       }
+//   }
+//   while (i < array1.length) {
+//       mergedArray.push(array1[i]);
+//       i++;
+//   }
+//   while (j < array2.length) {
+//       mergedArray.push(array2[j]);
+//       j++;
+//   }
 
-  return mergedArray;
+//   return mergedArray;
+// }
+// const result = mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
+// console.log(result); // Output: [0, 3, 4, 4, 6, 30, 31]
+
+
+// U-TASK
+
+function sumOdds(n: number): number {
+  let count = 0;
+  for (let i = 1; i <= n; i += 2) {
+      count++;
+  }
+  return count;
 }
-const result = mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
-console.log(result); // Output: [0, 3, 4, 4, 6, 30, 31]
+console.log(sumOdds(9));  // Output: 4
+console.log(sumOdds(11)); // Output: 5
