@@ -217,15 +217,42 @@ console.log("Train Area:");
 
 // S-TASK
 
-function missingNumber(nums: number[]): number {
-  const n = nums.length;
-  const expectedSum = (n * (n + 1)) / 2;
+// function missingNumber(nums: number[]): number {
+//   const n = nums.length;
+//   const expectedSum = (n * (n + 1)) / 2;
 
-  const actualSum = nums.reduce((sum, num) => sum + num, 0);
+//   const actualSum = nums.reduce((sum, num) => sum + num, 0);
 
-  return expectedSum - actualSum;
+//   return expectedSum - actualSum;
+// }
+
+// const result = missingNumber([3, 0, 1]);
+// console.log(result);
+
+// T-TASK
+
+function mergeSortedArrays(array1: number[], array2: number[]): number[] {
+  let i = 0, j = 0;
+  const mergedArray: number[] = [];
+  while (i < array1.length && j < array2.length) {
+      if (array1[i] < array2[j]) {
+          mergedArray.push(array1[i]);
+          i++;
+      } else {
+          mergedArray.push(array2[j]);
+          j++;
+      }
+  }
+  while (i < array1.length) {
+      mergedArray.push(array1[i]);
+      i++;
+  }
+  while (j < array2.length) {
+      mergedArray.push(array2[j]);
+      j++;
+  }
+
+  return mergedArray;
 }
-
-const result = missingNumber([3, 0, 1]);
-console.log(result);
-
+const result = mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
+console.log(result); // Output: [0, 3, 4, 4, 6, 30, 31]
