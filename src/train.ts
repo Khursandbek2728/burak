@@ -258,14 +258,32 @@ console.log("Train Area:");
 // console.log(result); // Output: [0, 3, 4, 4, 6, 30, 31]
 
 
-// U-TASK
+// // U-TASK
 
-function sumOdds(n: number): number {
-  let count = 0;
-  for (let i = 1; i <= n; i += 2) {
-      count++;
+// function sumOdds(n: number): number {
+//   let count = 0;
+//   for (let i = 1; i <= n; i += 2) {
+//       count++;
+//   }
+//   return count;
+// }
+// console.log(sumOdds(9));  // Output: 4
+// console.log(sumOdds(11)); // Output: 5
+
+
+// V-TASK
+
+function countChars(str: string): Record<string, number> {
+  const charCount: Record<string, number> = {};
+
+  for (const char of str) {
+      if (charCount[char]) {
+          charCount[char]++;
+      } else {
+          charCount[char] = 1;
+      }
   }
-  return count;
+
+  return charCount;
 }
-console.log(sumOdds(9));  // Output: 4
-console.log(sumOdds(11)); // Output: 5
+console.log(countChars("hello")); 
