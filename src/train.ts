@@ -273,17 +273,37 @@ console.log("Train Area:");
 
 // V-TASK
 
-function countChars(str: string): Record<string, number> {
-  const charCount: Record<string, number> = {};
+// function countChars(str: string): Record<string, number> {
+//   const charCount: Record<string, number> = {};
 
-  for (const char of str) {
-      if (charCount[char]) {
-          charCount[char]++;
-      } else {
-          charCount[char] = 1;
-      }
+//   for (const char of str) {
+//       if (charCount[char]) {
+//           charCount[char]++;
+//       } else {
+//           charCount[char] = 1;
+//       }
+//   }
+
+//   return charCount;
+// }
+// console.log(countChars("hello")); 
+
+
+// W-TASK
+
+
+function chunkArray<T>(array: T[], chunkSize: number): T[][] {
+  if (chunkSize <= 0) {
+    throw new Error("Chunk size must be greater than 0");
   }
 
-  return charCount;
+  const result: T[][] = [];
+  for (let i = 0; i < array.length; i += chunkSize) {
+    result.push(array.slice(i, i + chunkSize));
+  }
+
+  return result;
 }
-console.log(countChars("hello")); 
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const chunkSize = 3;
+console.log(chunkArray(array, chunkSize));
