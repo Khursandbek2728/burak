@@ -257,7 +257,6 @@ console.log("Train Area:");
 // const result = mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]);
 // console.log(result); // Output: [0, 3, 4, 4, 6, 30, 31]
 
-
 // // U-TASK
 
 // function sumOdds(n: number): number {
@@ -269,7 +268,6 @@ console.log("Train Area:");
 // }
 // console.log(sumOdds(9));  // Output: 4
 // console.log(sumOdds(11)); // Output: 5
-
 
 // V-TASK
 
@@ -286,24 +284,50 @@ console.log("Train Area:");
 
 //   return charCount;
 // }
-// console.log(countChars("hello")); 
-
+// console.log(countChars("hello"));
 
 // W-TASK
 
+// function chunkArray<T>(array: T[], chunkSize: number): T[][] {
+//   if (chunkSize <= 0) {
+//     throw new Error("Chunk size must be greater than 0");
+//   }
 
-function chunkArray<T>(array: T[], chunkSize: number): T[][] {
-  if (chunkSize <= 0) {
-    throw new Error("Chunk size must be greater than 0");
+//   const result: T[][] = [];
+//   for (let i = 0; i < array.length; i += chunkSize) {
+//     result.push(array.slice(i, i + chunkSize));
+//   }
+
+//   return result;
+// }
+// const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// const chunkSize = 3;
+// console.log(chunkArray(array, chunkSize));
+
+// X-TASK
+
+function countOccurrences(obj: Record<string, any>, key: string): number {
+  let count = 0;
+
+  function search(obj: Record<string, any>) {
+    for (const k in obj) {
+      if (k === key) {
+        count++;
+      }
+      if (typeof obj[k] === "object" && obj[k] !== null) {
+        search(obj[k]);
+      }
+    }
   }
 
-  const result: T[][] = [];
-  for (let i = 0; i < array.length; i += chunkSize) {
-    result.push(array.slice(i, i + chunkSize));
-  }
-
-  return result;
+  search(obj);
+  return count;
 }
-const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const chunkSize = 3;
-console.log(chunkArray(array, chunkSize));
+const data = {
+  model: "Bugatti",
+  steer: {
+    model: "HANKOOK",
+    size: 30,
+  },
+};
+console.log(countOccurrences(data, "model"));
