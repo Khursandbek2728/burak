@@ -6,6 +6,7 @@ import {
   MemberInput,
   LoginInput,
   AdminRequest,
+  ExtendedRequest,
 } from "../libs/types/member";
 import Errors, { HttpCode, Message } from "../libs/Errors";
 import { ProductInput, ProductInquiry } from "../libs/types/product";
@@ -14,6 +15,7 @@ import { ProductCollection } from "../libs/enums/product.enum";
 const productService = new ProductService();
 const productController: T = {};
 // SPA
+
 productController.getProducts = async (req: Request, res: Response) => {
   try {
     console.log("getProducts");
@@ -32,6 +34,26 @@ productController.getProducts = async (req: Request, res: Response) => {
     res.status(HttpCode.OK).json(result);
   } catch (err) {
     console.log("Error, getProducts:", err);
+    const message =
+      err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
+    res.send(
+      `<script> alert("${message}"); window.location.replace("/admin/signup")</script>`
+    );
+  }
+};
+
+productController.getProduct = async (req: ExtendedRequest, res: Response) => {
+  try {
+    console.log("getProduct");
+
+    const { id } = req.params;
+    console.log("req.member:", req.member);
+    const memberId = req.member?._id ?? null,
+      result = await productService.getProduct(memberId, id);
+
+    res.status(HttpCode.OK).json(result);
+  } catch (err) {
+    console.log("Error, getProduct:", err);
     const message =
       err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
     res.send(

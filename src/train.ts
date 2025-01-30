@@ -306,28 +306,37 @@ console.log("Train Area:");
 
 // X-TASK
 
-function countOccurrences(obj: Record<string, any>, key: string): number {
-  let count = 0;
+// function countOccurrences(obj: Record<string, any>, key: string): number {
+//   let count = 0;
 
-  function search(obj: Record<string, any>) {
-    for (const k in obj) {
-      if (k === key) {
-        count++;
-      }
-      if (typeof obj[k] === "object" && obj[k] !== null) {
-        search(obj[k]);
-      }
-    }
-  }
+//   function search(obj: Record<string, any>) {
+//     for (const k in obj) {
+//       if (k === key) {
+//         count++;
+//       }
+//       if (typeof obj[k] === "object" && obj[k] !== null) {
+//         search(obj[k]);
+//       }
+//     }
+//   }
 
-  search(obj);
-  return count;
+//   search(obj);
+//   return count;
+// }
+// const data = {
+//   model: "Bugatti",
+//   steer: {
+//     model: "HANKOOK",
+//     size: 30,
+//   },
+// };
+// console.log(countOccurrences(data, "model"));
+
+
+// Y-TASK
+
+function findIntersection<T>(arr1: T[], arr2: T[]): T[] {
+  return arr1.filter(value => arr2.includes(value));
 }
-const data = {
-  model: "Bugatti",
-  steer: {
-    model: "HANKOOK",
-    size: 30,
-  },
-};
-console.log(countOccurrences(data, "model"));
+
+console.log(findIntersection([1, 2, 3], [3, 2, 0])); // [2, 3]
