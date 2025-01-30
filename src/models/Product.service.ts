@@ -85,7 +85,7 @@ class ProductService {
       }
     }
 
-    return result;
+    return result as unknown as Product;
   }
 
   // SSR
