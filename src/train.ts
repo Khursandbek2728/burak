@@ -1,4 +1,5 @@
 console.log("Train Area:");
+console.log("Y-TASK");
 
 // // H-TASK
 
@@ -332,11 +333,10 @@ console.log("Train Area:");
 // };
 // console.log(countOccurrences(data, "model"));
 
-
 // Y-TASK
 
 function findIntersection<T>(arr1: T[], arr2: T[]): T[] {
-  return arr1.filter(value => arr2.includes(value));
+  return arr1.filter((value) => arr2.includes(value));
 }
 
 console.log(findIntersection([1, 2, 3], [3, 2, 0])); // [2, 3]
