@@ -8,11 +8,37 @@ import {
   AdminRequest,
 } from "../libs/types/member";
 import Errors, { HttpCode, Message } from "../libs/Errors";
-import { ProductInput } from "../libs/types/product";
+import { ProductInput, ProductInquiry } from "../libs/types/product";
+import { ProductCollection } from "../libs/enums/product.enum";
 
 const productService = new ProductService();
 const productController: T = {};
 // SPA
+productController.getProducts = async (req: Request, res: Response) => {
+  try {
+    console.log("getProducts");
+    const { page, limit, order, productCollection, search } = req.query;
+    const inquiry: ProductInquiry = {
+      order: String(order),
+      page: Number(page),
+      limit: Number(limit),
+    };
+    if (productCollection)
+      inquiry.productCollection = productCollection as ProductCollection;
+    if (search) inquiry.search = String(search);
+
+    const result = await productService.getProducts(inquiry);
+
+    res.status(HttpCode.OK).json(result);
+  } catch (err) {
+    console.log("Error, getProducts:", err);
+    const message =
+      err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
+    res.send(
+      `<script> alert("${message}"); window.location.replace("/admin/signup")</script>`
+    );
+  }
+};
 
 // SSR
 productController.getAllProducts = async (req: AdminRequest, res: Response) => {

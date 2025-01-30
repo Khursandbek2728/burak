@@ -3,9 +3,12 @@ import {
   ProductInput,
   Product,
   ProductUpdateInput,
+  ProductInquiry,
 } from "../libs/types/product";
 import Errors, { HttpCode, Message } from "../libs/Errors";
 import { shapeIntoMongooseObjectId } from "../libs/config";
+import { ProductStatus } from "../libs/enums/product.enum";
+import { T } from "../libs/types/common";
 
 class ProductService {
   private readonly ProductModel;
@@ -13,6 +16,31 @@ class ProductService {
     this.ProductModel = ProductModel;
   }
   // SPA
+
+  public async getProducts(inquiry: ProductInquiry): Promise<Product[]> {
+    const match: T = { ProductStatus: ProductStatus.PROCESS };
+
+    if (inquiry.productCollection)
+      match.productCollection = inquiry.productCollection;
+    if (inquiry.search) {
+      match.productName = { $regex: new RegExp(inquiry.search, "i") };
+    }
+
+    const sort: T =
+      inquiry.order === "productPrice"
+        ? { [inquiry.order]: 1 }
+        : { [inquiry.order]: -1 };
+
+    const result = await this.ProductModel.aggregate([
+      { $match: match },
+      { $sort: sort },
+      { $skip: (inquiry.page * 1 - 1) * inquiry.limit },
+      { $limit: inquiry.limit * 1 },
+    ]).exec();
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+    return result;
+  }
 
   // SSR
   public async getAllProducts(): Promise<Product> {
