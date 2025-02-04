@@ -1,5 +1,5 @@
 console.log("Train Area:");
-console.log("Y-TASK");
+console.log("Z-TASK");
 
 // // H-TASK
 
@@ -335,8 +335,18 @@ console.log("Y-TASK");
 
 // Y-TASK
 
-function findIntersection<T>(arr1: T[], arr2: T[]): T[] {
-  return arr1.filter((value) => arr2.includes(value));
+// function findIntersection<T>(arr1: T[], arr2: T[]): T[] {
+//   return arr1.filter((value) => arr2.includes(value));
+// }
+
+// console.log(findIntersection([1, 2, 3], [3, 2, 0])); // [2, 3]
+
+
+// Z-TASK
+
+function sumEvens(numbers: number[]): number {
+  return numbers.filter(num => num % 2 === 0).reduce((sum, num) => sum + num, 0);
 }
 
-console.log(findIntersection([1, 2, 3], [3, 2, 0])); // [2, 3]
+console.log(sumEvens([1, 2, 3])); // 2
+console.log(sumEvens([1, 2, 3, 2])); // 4
