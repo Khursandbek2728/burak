@@ -1,5 +1,7 @@
+import { Task } from "vscode";
+
 console.log("Train Area:");
-console.log("Z-TASK");
+console.log("ZA-TASK");
 
 // // H-TASK
 
@@ -341,12 +343,19 @@ console.log("Z-TASK");
 
 // console.log(findIntersection([1, 2, 3], [3, 2, 0])); // [2, 3]
 
-
 // Z-TASK
 
-function sumEvens(numbers: number[]): number {
-  return numbers.filter(num => num % 2 === 0).reduce((sum, num) => sum + num, 0);
-}
+// function sumEvens(numbers: number[]): number {
+//   return numbers.filter(num => num % 2 === 0).reduce((sum, num) => sum + num, 0);
+// }
 
-console.log(sumEvens([1, 2, 3])); // 2
-console.log(sumEvens([1, 2, 3, 2])); // 4
+// console.log(sumEvens([1, 2, 3])); // 2
+// console.log(sumEvens([1, 2, 3, 2])); // 4
+
+// ZA-Task
+
+function sortByAge(arr: { age: number }[]): { age: number }[] {
+  return arr.sort((a, b) => a.age - b.age);
+}
+const people = [{ age: 23 }, { age: 21 }, { age: 13 }];
+console.log(sortByAge(people));
